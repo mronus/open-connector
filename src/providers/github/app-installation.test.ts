@@ -76,9 +76,9 @@ describe("GitHub App private keys", () => {
     const key = await createTestKey();
 
     expect(
-      readGitHubAppInstallationCredential({ appId: "Iv23liExampleClientId", installationId, privateKey: key.pkcs1 })
+      readGitHubAppInstallationCredential({ appId: "Iv23lis6jGhJBOgMXMW0", installationId, privateKey: key.pkcs1 })
         .appId,
-    ).toBe("Iv23liExampleClientId");
+    ).toBe("Iv23lis6jGhJBOgMXMW0");
     for (const invalid of ["my app", "https://x"]) {
       expect(() =>
         readGitHubAppInstallationCredential({ appId: invalid, installationId, privateKey: key.pkcs1 }),
@@ -108,14 +108,14 @@ describe("GitHub App JWT", () => {
   it("issues the token with a client ID unchanged", async () => {
     const key = await createTestKey();
     const credential = readGitHubAppInstallationCredential({
-      appId: "Iv23liExampleClientId",
+      appId: "Iv23lis6jGhJBOgMXMW0",
       installationId,
       privateKey: key.pkcs1,
     });
 
     const { payload } = await jwtVerify(await signGitHubAppJwt(credential), key.publicKey);
 
-    expect(payload.iss).toBe("Iv23liExampleClientId");
+    expect(payload.iss).toBe("Iv23lis6jGhJBOgMXMW0");
   });
 
   it("reports a key that is PEM but not RSA as a credential error", async () => {
