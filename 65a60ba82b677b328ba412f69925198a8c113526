@@ -1,0 +1,16 @@
+version 1
+commit 65a60ba82b677b328ba412f69925198a8c113526
+capture observed git/2.56.0.agit.2
+actor dae759d4-bdc3-4900-bf1b-95139b981a20 ai model=claude-sonnet-5-5 tool=claude-code session=dae759d4-bdc3-4900-bf1b-95139b981a20 source=observed
+file examples/microsoft-teams-bot.ts
++ 1-46 AI dae759d4-bdc3-4900-bf1b-95139b981a20 ca19259e8e1377420ffba36bbe96b8312a9aa21d
+file src/providers/microsoft_teams_bot/actions.ts
++ 1-172 AI dae759d4-bdc3-4900-bf1b-95139b981a20 7f84c625743af1a906317f8e75e2cf5d7126e934
+file src/providers/microsoft_teams_bot/definition.ts
++ 1-61 AI dae759d4-bdc3-4900-bf1b-95139b981a20 466fb9379cc8cc8948e4319e32f2880c13e67751
+file src/providers/microsoft_teams_bot/executors.ts
++ 1-24 AI dae759d4-bdc3-4900-bf1b-95139b981a20 2a929055e7c07556a29730511d0fe7263b3dd623
+file src/providers/microsoft_teams_bot/runtime.test.ts
++ 1-163 AI dae759d4-bdc3-4900-bf1b-95139b981a20 13d7a080760866e32939cbface17eca13bd9e092
+file src/providers/microsoft_teams_bot/runtime.ts
++ 1-445 AI dae759d4-bdc3-4900-bf1b-95139b981a20 834539627b10c1c3018abf8938539b62c8f4b0c0
