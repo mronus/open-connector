@@ -1,0 +1,38 @@
+version 1
+commit afd8d9bb058b5d12c633d1febbcc39e101b38e17
+capture observed git/2.56.0.agit.2
+actor dae759d4-bdc3-4900-bf1b-95139b981a20 ai model=claude-sonnet-5-5 tool=claude-code session=dae759d4-bdc3-4900-bf1b-95139b981a20 source=observed
+file docs/configuration.md
++ 10-51 AI dae759d4-bdc3-4900-bf1b-95139b981a20 0ceae81864af31a70b67ad80b46af27c10efd9b4
++ 368-418 AI dae759d4-bdc3-4900-bf1b-95139b981a20 8139fbaee610c1c4413206888628c1ddd1618014
+- 10-51 AI dae759d4-bdc3-4900-bf1b-95139b981a20 6318c94e10b835237bd708d9d0fc4c5c8e494e93
+file src/server/api/auth.ts
++ 151 AI dae759d4-bdc3-4900-bf1b-95139b981a20 0544d9a2d24ccf6b0fd998f6bd00cfeca892749f
+file src/server/api/event-verification-routes.ts
++ 1-163 AI dae759d4-bdc3-4900-bf1b-95139b981a20 1e717a39c486e4e217ccc42bd6b25c0e916022a8
+file src/server/api/openapi.ts
++ 454-501 AI dae759d4-bdc3-4900-bf1b-95139b981a20 c5dc737a54cfaf912c13fd6ccbb91aef9e08add0
+file src/server/connect-server.test.ts
++ 146-185 AI dae759d4-bdc3-4900-bf1b-95139b981a20 6f8dd749d79b53d3011b83eb61d87ebfd9a37a42
+file src/server/connect-server.ts
++ 39-42 AI dae759d4-bdc3-4900-bf1b-95139b981a20 2d3727d72ec2de0fc165f416a7e5003aaecbc280
++ 58-60 AI dae759d4-bdc3-4900-bf1b-95139b981a20 87d8b494997552a074aff628280dd362cbe51753
++ 177-178 AI dae759d4-bdc3-4900-bf1b-95139b981a20 0a54820fc3fa78e226088ff5f1f75280c7f699a3
++ 188 AI dae759d4-bdc3-4900-bf1b-95139b981a20 76e9dc8a5b66008c17066e6fd92b9ff9f33f1137
++ 240-247 AI dae759d4-bdc3-4900-bf1b-95139b981a20 f1b7877d2739cb6bcd7d6a4df2be823f77ae4369
+- 54-55 AI dae759d4-bdc3-4900-bf1b-95139b981a20 4d3d5bfa3b248ba153317ce3bc7430414c207d49
+- 172-186 AI dae759d4-bdc3-4900-bf1b-95139b981a20 0b18ca2c1184a4bd349ef5f845e557b93e621268
+- 196 AI dae759d4-bdc3-4900-bf1b-95139b981a20 b8c151e7459a68d73a63c943f74cffabaa417415
+- 447-461 AI dae759d4-bdc3-4900-bf1b-95139b981a20 960547635708c0e8254a0058047d1e5b7e68ec64
+file src/server/event-request-body.ts
++ 1-43 AI dae759d4-bdc3-4900-bf1b-95139b981a20 56a94ffb62cf958486ec21cd2390b7fdccbd5a37
+file src/server/slack-event-verification.ts
++ 2 AI dae759d4-bdc3-4900-bf1b-95139b981a20 5e9edc335a9825bb539916c69f8b23f350d4a4e1
++ 37 AI dae759d4-bdc3-4900-bf1b-95139b981a20 5ad70362a694b71718c4050352d0a9775c3ffc4a
+- 2-4 AI dae759d4-bdc3-4900-bf1b-95139b981a20 8ea94e61bffdf72eb169dea346a2a61a2b3bb239
+- 31-71 AI dae759d4-bdc3-4900-bf1b-95139b981a20 16dd39553925173ca52b1e6bc4e76aaed50ad603
+- 80 AI dae759d4-bdc3-4900-bf1b-95139b981a20 a02b1bc0e709351fd58e84cd4ec92e3bd61804ba
+file src/server/teams-bot-event-verification.test.ts
++ 1-89 AI dae759d4-bdc3-4900-bf1b-95139b981a20 3990593fd43e267ab594900ef597bc663d61419c
+file src/server/teams-bot-event-verification.ts
++ 1-220 AI dae759d4-bdc3-4900-bf1b-95139b981a20 26131baaee7151a260c47ad81e45a03495fdf5bf
