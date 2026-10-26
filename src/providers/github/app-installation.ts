@@ -26,6 +26,13 @@ const appJwtClockSkewSeconds = 60;
 /** A cached installation token is replaced this long before GitHub expires it. */
 const installationTokenRenewalMarginMs = 5 * 60 * 1000;
 
+/**
+ * GitHub accepts either the numeric App ID or the client ID as the JWT issuer
+ * and does not document a client ID format, so only characters that cannot
+ * belong to an identifier (whitespace, URL punctuation) are refused.
+ */
+const githubAppIdentifierPattern = /^[A-Za-z0-9._-]+$/u;
+
 const pkcs8Marker = "-----BEGIN PRIVATE KEY-----";
 const pkcs1Marker = "-----BEGIN RSA PRIVATE KEY-----";
 
@@ -54,8 +61,11 @@ interface GitHubAppInstallation {
 
 export function readGitHubAppInstallationCredential(values: Record<string, string>): GitHubAppInstallationCredential {
   const appId = requiredInputString(values.appId, "appId").trim();
-  if (!/^\d+$/u.test(appId)) {
-    throw new ProviderRequestError(400, "appId must be the numeric App ID shown on the GitHub App's settings page");
+  if (!githubAppIdentifierPattern.test(appId)) {
+    throw new ProviderRequestError(
+      400,
+      "appId must be the GitHub App's numeric App ID or its client ID, both shown on the App's settings page",
+    );
   }
   const installationId = requiredInputString(values.installationId, "installationId").trim();
   if (!/^\d+$/u.test(installationId)) {

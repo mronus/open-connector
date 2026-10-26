@@ -72,12 +72,18 @@ describe("GitHub App private keys", () => {
     );
   });
 
-  it("requires numeric App and installation ids", async () => {
+  it("accepts a numeric App ID or a client ID and refuses other values", async () => {
     const key = await createTestKey();
 
-    expect(() =>
-      readGitHubAppInstallationCredential({ appId: "my-app", installationId, privateKey: key.pkcs1 }),
-    ).toThrow(/appId must be the numeric App ID/u);
+    expect(
+      readGitHubAppInstallationCredential({ appId: "Iv23liExampleClientId", installationId, privateKey: key.pkcs1 })
+        .appId,
+    ).toBe("Iv23liExampleClientId");
+    for (const invalid of ["my app", "https://x"]) {
+      expect(() =>
+        readGitHubAppInstallationCredential({ appId: invalid, installationId, privateKey: key.pkcs1 }),
+      ).toThrow(/appId must be the GitHub App's numeric App ID or its client ID/u);
+    }
     expect(() =>
       readGitHubAppInstallationCredential({ appId, installationId: "bakey", privateKey: key.pkcs1 }),
     ).toThrow(/installationId must be the numeric installation id/u);
@@ -97,6 +103,19 @@ describe("GitHub App JWT", () => {
     // GitHub refuses a JWT older than ten minutes and one issued in the future.
     expect((payload.exp as number) - (payload.iat as number)).toBe(540);
     expect(payload.iat as number).toBeLessThan(Math.floor(Date.now() / 1000));
+  });
+
+  it("issues the token with a client ID unchanged", async () => {
+    const key = await createTestKey();
+    const credential = readGitHubAppInstallationCredential({
+      appId: "Iv23liExampleClientId",
+      installationId,
+      privateKey: key.pkcs1,
+    });
+
+    const { payload } = await jwtVerify(await signGitHubAppJwt(credential), key.publicKey);
+
+    expect(payload.iss).toBe("Iv23liExampleClientId");
   });
 
   it("reports a key that is PEM but not RSA as a credential error", async () => {
