@@ -53,6 +53,8 @@ interface GitHubInstallationToken {
 
 interface GitHubAppInstallation {
   id: number;
+  /** Numeric App ID the installation belongs to. */
+  app_id?: number;
   account: Record<string, unknown>;
   permissions: Record<string, string>;
   repository_selection: string;
