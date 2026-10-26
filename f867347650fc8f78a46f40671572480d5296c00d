@@ -1,0 +1,5 @@
+version 1
+commit f867347650fc8f78a46f40671572480d5296c00d
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792983315 ended=1792983899
+
+Lets the GitHub App installation credential accept the App's client ID as appId, as GitHub documents for the JWT issuer. The validator no longer assumes a client ID format since GitHub documents none; the field text says to prefer the client ID and notes older GHES releases only document the numeric App ID. Tests cover the accepted client ID, refused values, and the JWT issuer.
