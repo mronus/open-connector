@@ -1,0 +1,5 @@
+version 1
+commit 750ef363fd4a5d604db113acae1094b98173634b
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792982082 ended=1792982121
+
+Prepares the verify-endpoint branch for main after the provider PR was squash-merged: removes the example upstream dropped and keeps the docs env table untouched apart from the verify-token row.
