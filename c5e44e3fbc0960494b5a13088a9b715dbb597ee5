@@ -1,0 +1,12 @@
+version 1
+commit c5e44e3fbc0960494b5a13088a9b715dbb597ee5
+capture observed git/2.56.0.agit.2
+actor dae759d4-bdc3-4900-bf1b-95139b981a20 ai model=claude-sonnet-5-5 tool=claude-code session=dae759d4-bdc3-4900-bf1b-95139b981a20 source=observed
+file src/providers/github/app-installation.ts
++ 56-57 AI dae759d4-bdc3-4900-bf1b-95139b981a20 73999bd91b514bf0d7f2348ee398ac43489636cf
+file src/providers/github/executors.test.ts
++ 276-289 AI dae759d4-bdc3-4900-bf1b-95139b981a20 8faf43d3a3ad1f0da143e3a4df3ffc7f75a10c6f
+file src/providers/github/executors.ts
++ 11 AI dae759d4-bdc3-4900-bf1b-95139b981a20 7427497833e04393ad020129ddd26e1a14268cd5
++ 177-178 AI dae759d4-bdc3-4900-bf1b-95139b981a20 79c4fa186a0ae3e98373fc10118c31674b34e3e3
+- 176 AI dae759d4-bdc3-4900-bf1b-95139b981a20 c943c23a18df397e5a149ba750733f3da36e8a85
