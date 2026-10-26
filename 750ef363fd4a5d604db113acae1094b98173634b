@@ -1,0 +1,9 @@
+version 1
+commit 750ef363fd4a5d604db113acae1094b98173634b
+capture observed git/2.56.0.agit.2
+actor dae759d4-bdc3-4900-bf1b-95139b981a20 ai model=claude-sonnet-5-5 tool=claude-code session=dae759d4-bdc3-4900-bf1b-95139b981a20 source=observed
+file docs/configuration.md
++ 10-51 AI dae759d4-bdc3-4900-bf1b-95139b981a20 1a1ae7d9044fdc60f3278e3bb221a51722bd8c64
+- 10-51 AI dae759d4-bdc3-4900-bf1b-95139b981a20 0ceae81864af31a70b67ad80b46af27c10efd9b4
+file examples/microsoft-teams-bot.ts
+- 1-46 AI dae759d4-bdc3-4900-bf1b-95139b981a20 ca19259e8e1377420ffba36bbe96b8312a9aa21d
