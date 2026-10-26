@@ -102,6 +102,7 @@ export async function verifyTeamsBotEventRequest(
       issuer: cloud.issuer,
       audience: input.appId,
       algorithms: allowedAlgorithms,
+      requiredClaims: ["exp"],
       clockTolerance: clockToleranceSeconds,
       currentDate: input.now === undefined ? undefined : new Date(input.now),
     });

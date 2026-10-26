@@ -14,18 +14,18 @@ const otherKeys = await generateKeyPair("RS256");
 interface TokenOptions {
   iss?: string;
   aud?: string;
-  exp?: number;
+  exp?: number | null;
   claimServiceUrl?: string;
   key?: CryptoKey;
 }
 
 async function token(options: TokenOptions = {}): Promise<string> {
-  return new SignJWT({ serviceurl: options.claimServiceUrl ?? serviceUrl })
+  const jwt = new SignJWT({ serviceurl: options.claimServiceUrl ?? serviceUrl })
     .setProtectedHeader({ alg: "RS256", kid: "key-1" })
     .setIssuer(options.iss ?? issuer)
-    .setAudience(options.aud ?? appId)
-    .setExpirationTime(options.exp ?? now / 1000 + 600)
-    .sign(options.key ?? privateKey);
+    .setAudience(options.aud ?? appId);
+  if (options.exp !== null) jwt.setExpirationTime(options.exp ?? now / 1000 + 600);
+  return jwt.sign(options.key ?? privateKey);
 }
 
 function activity(overrides: Record<string, unknown> = {}): Uint8Array {
@@ -63,6 +63,10 @@ describe("Teams bot inbound activity verification", () => {
 
   it("rejects an expired token beyond the clock tolerance", async () => {
     await expect(verify({ exp: now / 1000 - 600 })).resolves.toEqual({ valid: false, reason: "timestamp" });
+  });
+
+  it("rejects a signed token that carries no expiry", async () => {
+    await expect(verify({ exp: null })).resolves.toEqual({ valid: false, reason: "token" });
   });
 
   it("binds the token to the activity serviceUrl", async () => {
