@@ -143,6 +143,7 @@ interface PublishedKeys {
   keys: Map<string, BotFrameworkSigningKey>;
   fetchedAt: number;
   expiresAt: number;
+  refreshError: BotFrameworkKeysUnavailableError | undefined;
 }
 
 const publishedKeys = new Map<string, PublishedKeys>();
@@ -166,6 +167,7 @@ async function resolvePublishedKey(
     current = await refreshPublishedKeys(cloud, current);
     key = current.keys.get(keyId);
   }
+  if (!key && current.refreshError) throw current.refreshError;
   return key;
 }
 
@@ -177,9 +179,11 @@ async function refreshPublishedKeys(
   if (!pending) {
     pending = fetchPublishedKeys(cloud)
       .catch((error: unknown) => {
-        if (!stale)
-          throw new BotFrameworkKeysUnavailableError("Bot Framework signing keys are unavailable.", { cause: error });
-        return { ...stale, fetchedAt: Date.now(), expiresAt: Date.now() + keysRetryDelayMs };
+        const refreshError = new BotFrameworkKeysUnavailableError("Bot Framework signing keys are unavailable.", {
+          cause: error,
+        });
+        if (!stale) throw refreshError;
+        return { ...stale, fetchedAt: Date.now(), expiresAt: Date.now() + keysRetryDelayMs, refreshError };
       })
       .then((keys) => {
         publishedKeys.set(cloud.openIdMetadataUrl, keys);
@@ -198,9 +202,10 @@ async function fetchPublishedKeys(cloud: BotFrameworkCloud): Promise<PublishedKe
     throw new Error("Bot Framework metadata has no HTTPS jwks_uri.");
 
   const document = optionalRecord(await fetchJson(jwksUri));
+  if (!Array.isArray(document?.keys)) throw new Error("Bot Framework keys document has no keys array.");
   const { importJWK } = await import("jose");
   const keys = new Map<string, BotFrameworkSigningKey>();
-  for (const entry of Array.isArray(document?.keys) ? document.keys : []) {
+  for (const entry of document.keys) {
     const jwk = optionalRecord(entry);
     const keyId = optionalString(jwk?.kid);
     if (!jwk || !keyId || jwk.kty !== "RSA") continue;
@@ -211,7 +216,7 @@ async function fetchPublishedKeys(cloud: BotFrameworkCloud): Promise<PublishedKe
     keys.set(keyId, { key: (await importJWK(jwk as unknown as JWK, "RS256")) as JoseCryptoKey, endorsements });
   }
   const now = Date.now();
-  return { keys, fetchedAt: now, expiresAt: now + keysTtlMs };
+  return { keys, fetchedAt: now, expiresAt: now + keysTtlMs, refreshError: undefined };
 }
 
 // The metadata URLs are fixed Microsoft endpoints and the jwks_uri they publish is required to be HTTPS.

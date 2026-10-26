@@ -1,7 +1,7 @@
 import type { BotFrameworkSigningKey } from "./teams-bot-event-verification.ts";
 
-import { generateKeyPair, SignJWT } from "jose";
-import { describe, expect, it } from "vitest";
+import { exportJWK, generateKeyPair, SignJWT } from "jose";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { verifyTeamsBotEventRequest } from "./teams-bot-event-verification.ts";
 
 const appId = "00000000-0000-0000-0000-000000000001";
@@ -12,6 +12,7 @@ const { privateKey, publicKey } = await generateKeyPair("RS256");
 const otherKeys = await generateKeyPair("RS256");
 
 interface TokenOptions {
+  kid?: string;
   iss?: string;
   aud?: string;
   exp?: number | null;
@@ -21,7 +22,7 @@ interface TokenOptions {
 
 async function token(options: TokenOptions = {}): Promise<string> {
   const jwt = new SignJWT({ serviceurl: options.claimServiceUrl ?? serviceUrl })
-    .setProtectedHeader({ alg: "RS256", kid: "key-1" })
+    .setProtectedHeader({ alg: "RS256", kid: options.kid ?? "key-1" })
     .setIssuer(options.iss ?? issuer)
     .setAudience(options.aud ?? appId);
   if (options.exp !== null) jwt.setExpirationTime(options.exp ?? now / 1000 + 600);
@@ -89,5 +90,75 @@ describe("Teams bot inbound activity verification", () => {
     await expect(
       verifyTeamsBotEventRequest({ authorization: "Bearer nope", rawBody: new Uint8Array(), appId, now }),
     ).resolves.toEqual({ valid: false, reason: "token" });
+  });
+});
+
+describe("Bot Framework published signing keys", () => {
+  let verifier: typeof import("./teams-bot-event-verification.ts");
+  let keysDocument: unknown;
+  const fetcher = vi.fn(async (url: string) =>
+    Response.json(url.endsWith("openidconfiguration") ? { jwks_uri: "https://keys.example/jwks" } : keysDocument),
+  );
+
+  beforeEach(async () => {
+    vi.resetModules();
+    verifier = await import("./teams-bot-event-verification.ts");
+    vi.spyOn(Date, "now").mockReturnValue(now);
+    fetcher.mockClear();
+    keysDocument = { keys: [{ ...(await exportJWK(publicKey)), kid: "key-1", endorsements: ["msteams"] }] };
+    vi.stubGlobal("fetch", fetcher);
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+  });
+
+  async function verifyPublished(kid = "key-1") {
+    return verifier.verifyTeamsBotEventRequest({
+      authorization: `Bearer ${await token({ kid })}`,
+      rawBody: activity(),
+      appId,
+      now,
+    });
+  }
+
+  it("keeps cached keys usable but reports unavailable unknown keys after a failed refresh", async () => {
+    await expect(verifyPublished()).resolves.toMatchObject({ valid: true });
+    vi.mocked(Date.now).mockReturnValue(now + 3_600_001);
+    fetcher.mockRejectedValueOnce(new Error("Network unavailable"));
+
+    await expect(verifyPublished("new-key")).rejects.toBeInstanceOf(verifier.BotFrameworkKeysUnavailableError);
+    await expect(verifyPublished()).resolves.toMatchObject({ valid: true });
+    await expect(verifyPublished("new-key")).rejects.toBeInstanceOf(verifier.BotFrameworkKeysUnavailableError);
+    expect(fetcher).toHaveBeenCalledTimes(3);
+
+    keysDocument = { keys: [{ ...(await exportJWK(publicKey)), kid: "new-key", endorsements: ["msteams"] }] };
+    vi.mocked(Date.now).mockReturnValue(now + 3_900_002);
+    await expect(verifyPublished("new-key")).resolves.toMatchObject({ valid: true });
+    await expect(verifyPublished("unknown-key")).resolves.toEqual({ valid: false, reason: "token" });
+    expect(fetcher).toHaveBeenCalledTimes(5);
+  });
+
+  it.each([null, {}, { keys: {} }, { error: "unavailable" }])(
+    "preserves cached keys when the JWKS response is malformed: %j",
+    async (document) => {
+      await expect(verifyPublished()).resolves.toMatchObject({ valid: true });
+      vi.mocked(Date.now).mockReturnValue(now + 3_600_001);
+      keysDocument = document;
+
+      await expect(verifyPublished()).resolves.toMatchObject({ valid: true });
+      await expect(verifyPublished("new-key")).rejects.toBeInstanceOf(verifier.BotFrameworkKeysUnavailableError);
+      expect(fetcher).toHaveBeenCalledTimes(4);
+    },
+  );
+
+  it("reports malformed JWKS as unavailable when no cache exists", async () => {
+    keysDocument = {};
+    await expect(verifyPublished()).rejects.toBeInstanceOf(verifier.BotFrameworkKeysUnavailableError);
+  });
+
+  it("rejects an unknown key after successfully fetching a valid JWKS", async () => {
+    await expect(verifyPublished("unknown-key")).resolves.toEqual({ valid: false, reason: "token" });
   });
 });
