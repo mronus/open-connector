@@ -1,6 +1,5 @@
 import type { CryptoKey as JoseCryptoKey, JWK } from "jose";
 
-import { decodeJwt, decodeProtectedHeader, errors, importJWK, jwtVerify } from "jose";
 import { optionalRecord, optionalString } from "../core/cast.ts";
 import { eventRequestMaximumBodyBytes } from "./event-request-body.ts";
 
@@ -77,6 +76,9 @@ export async function verifyTeamsBotEventRequest(
 ): Promise<TeamsBotEventVerificationResult> {
   if (input.rawBody.byteLength > eventRequestMaximumBodyBytes) return { valid: false, reason: "body_too_large" };
 
+  // jose is loaded on first use so a runtime that never verifies Teams activities does not load it.
+  const jose = await import("jose");
+
   const token = /^bearer\s+(.+)$/i.exec(input.authorization.trim())?.[1]?.trim();
   if (!token) return { valid: false, reason: "token" };
 
@@ -84,8 +86,8 @@ export async function verifyTeamsBotEventRequest(
   let keyId: string | undefined;
   try {
     // Pick the issuer's key set from the unverified issuer, then pin that issuer when verifying.
-    cloud = botFrameworkClouds.find((candidate) => candidate.issuer === decodeJwt(token).iss);
-    keyId = decodeProtectedHeader(token).kid;
+    cloud = botFrameworkClouds.find((candidate) => candidate.issuer === jose.decodeJwt(token).iss);
+    keyId = jose.decodeProtectedHeader(token).kid;
   } catch {
     return { valid: false, reason: "token" };
   }
@@ -96,7 +98,7 @@ export async function verifyTeamsBotEventRequest(
 
   let serviceUrlClaim: unknown;
   try {
-    const { payload } = await jwtVerify(token, signingKey.key, {
+    const { payload } = await jose.jwtVerify(token, signingKey.key, {
       issuer: cloud.issuer,
       audience: input.appId,
       algorithms: allowedAlgorithms,
@@ -105,7 +107,7 @@ export async function verifyTeamsBotEventRequest(
     });
     serviceUrlClaim = payload.serviceurl;
   } catch (error) {
-    return { valid: false, reason: rejectionReason(error) };
+    return { valid: false, reason: rejectionReason(error, jose.errors) };
   }
 
   // Only parse the body after its token is trusted.
@@ -127,9 +129,9 @@ export async function verifyTeamsBotEventRequest(
   return { valid: true, appId: input.appId, serviceUrl, channelId };
 }
 
-function rejectionReason(error: unknown): "token" | "timestamp" | "app" {
-  if (error instanceof errors.JWTExpired) return "timestamp";
-  if (error instanceof errors.JWTClaimValidationFailed) {
+function rejectionReason(error: unknown, joseErrors: typeof import("jose").errors): "token" | "timestamp" | "app" {
+  if (error instanceof joseErrors.JWTExpired) return "timestamp";
+  if (error instanceof joseErrors.JWTClaimValidationFailed) {
     if (error.claim === "aud") return "app";
     if (error.claim === "nbf") return "timestamp";
   }
@@ -195,6 +197,7 @@ async function fetchPublishedKeys(cloud: BotFrameworkCloud): Promise<PublishedKe
     throw new Error("Bot Framework metadata has no HTTPS jwks_uri.");
 
   const document = optionalRecord(await fetchJson(jwksUri));
+  const { importJWK } = await import("jose");
   const keys = new Map<string, BotFrameworkSigningKey>();
   for (const entry of Array.isArray(document?.keys) ? document.keys : []) {
     const jwk = optionalRecord(entry);
