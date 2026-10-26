@@ -1,0 +1,5 @@
+version 1
+commit 4d7f6b52e202e0effcf18dfd84e72295e05da03f
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792974975 ended=1792976276
+
+Adds the microsoft_teams_bot provider: custom credentials, client-credentials token minting (public and sovereign authority by service URL host), a Teams-host allow-list for serviceUrl, and six Bot Connector actions with pagedMembers and thread routing. Values were checked against Microsoft docs and open-source Bot Framework/Teams SDK code.
