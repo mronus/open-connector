@@ -1,0 +1,5 @@
+version 1
+commit c1a739530d53d8383a9dc793f78e9db618188843
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792984022 ended=1792984037
+
+Replaces the sample client ID in the GitHub App tests with random look-alikes in the modern and legacy formats.
