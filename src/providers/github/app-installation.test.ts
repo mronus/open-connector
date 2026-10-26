@@ -83,7 +83,7 @@ describe("GitHub App private keys", () => {
       readGitHubAppInstallationCredential({ appId: "Iv1.pgyb7nOiAvasoAZL", installationId, privateKey: key.pkcs1 })
         .appId,
     ).toBe("Iv1.pgyb7nOiAvasoAZL");
-    for (const invalid of ["my app", "https://x"]) {
+    for (const invalid of ["my app", "https://x", "my-app"]) {
       expect(() =>
         readGitHubAppInstallationCredential({ appId: invalid, installationId, privateKey: key.pkcs1 }),
       ).toThrow(/appId must be the GitHub App's numeric App ID or its client ID/u);

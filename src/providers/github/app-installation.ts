@@ -28,10 +28,10 @@ const installationTokenRenewalMarginMs = 5 * 60 * 1000;
 
 /**
  * GitHub accepts either the numeric App ID or the client ID as the JWT issuer
- * and does not document a client ID format, so only characters that cannot
- * belong to an identifier (whitespace, URL punctuation) are refused.
+ * and does not document a client ID format. Client IDs are alphanumeric, and the
+ * legacy `Iv1.` form carries a dot, so only characters outside that set are refused.
  */
-const githubAppIdentifierPattern = /^[A-Za-z0-9._-]+$/u;
+const githubAppIdentifierPattern = /^[A-Za-z0-9.]+$/u;
 
 const pkcs8Marker = "-----BEGIN PRIVATE KEY-----";
 const pkcs1Marker = "-----BEGIN RSA PRIVATE KEY-----";
