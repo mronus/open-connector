@@ -1,0 +1,5 @@
+version 1
+commit c5e44e3fbc0960494b5a13088a9b715dbb597ee5
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792984064 ended=1792984098
+
+Reports the numeric app_id GitHub returns for the installation as the connection metadata appId, so consumers get the numeric App ID whether the user typed it or the client ID. Falls back to the submitted value when GitHub omits it.
