@@ -33,6 +33,17 @@ describe("validateTeamsBotCredential", () => {
     expect(result.profile?.accountId).toBe("app-1");
   });
 
+  it("contacts Microsoft even when a token for the same secret is cached", async () => {
+    let calls = 0;
+    const fetcher = async (): Promise<Response> => {
+      calls += 1;
+      return tokenResponse();
+    };
+    await validateTeamsBotCredential({ ...values, appId: "app-cache" }, fetcher);
+    await validateTeamsBotCredential({ ...values, appId: "app-cache" }, fetcher);
+    expect(calls).toBe(2);
+  });
+
   it("reports a rejected secret as a field error", async () => {
     const rejected = async (): Promise<Response> =>
       Response.json(
