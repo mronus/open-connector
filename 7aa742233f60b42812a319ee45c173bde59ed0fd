@@ -1,0 +1,14 @@
+version 1
+commit 7aa742233f60b42812a319ee45c173bde59ed0fd
+capture observed git/2.56.0.agit.2
+actor human human ident=M. Abdullah Onus <mronus@gmail.com>
+file src/server/teams-bot-event-verification.test.ts
++ 17 HUMAN human 8b7cf46e146f40d17946bfaf05452fa739712a51
++ 23 HUMAN human 5e20c44caedcfc403dad016bb4af94e58b2b4b23
++ 26-28 HUMAN human ac3ff982f0c7799936e1b0b421d60e7282141e24
++ 68-71 HUMAN human da92e8e46a47e36b33508f9e04aadab1b757b3a8
+- 17 HUMAN human e149c534312ad02dd1f41155fe96d5b6ca9d7987
+- 23 HUMAN human 9be091ab03cb23095619a5e344be900dee902deb
+- 26-28 HUMAN human 7e482675be49c179aa9261d1c542748835455d57
+file src/server/teams-bot-event-verification.ts
++ 105 HUMAN human 2871c085316a748b5cd3c9b7f075bba8b6b0a121
