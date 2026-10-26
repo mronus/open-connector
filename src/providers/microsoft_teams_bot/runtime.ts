@@ -12,6 +12,7 @@ import {
   readProviderErrorTextBody,
   readProviderJsonBody,
   requiredInputString,
+  requiredResponseRecord,
   runProviderRequest,
   setSearchParams,
 } from "../provider-runtime.ts";
@@ -49,7 +50,7 @@ const governmentHostSuffix = "teams.microsoft.us";
 
 type TeamsBotRequestPhase = "validate" | "execute";
 
-export interface TeamsBotCredential {
+interface TeamsBotCredential {
   appId: string;
   clientSecret: string;
   tenantId: string;
@@ -136,7 +137,7 @@ export const microsoftTeamsBotActionHandlers: ProviderActionHandlers<typeof serv
       path: "/v3/conversations",
       body: createConversationBody(context, { memberId, teamId, tenantId, input }),
     });
-    const record = requireRecord(response, "create_conversation response");
+    const record = requiredResponseRecord(response, "create_conversation response");
     return compactObject({
       ...record,
       id: requireString(record.id, "conversation id"),
@@ -146,7 +147,7 @@ export const microsoftTeamsBotActionHandlers: ProviderActionHandlers<typeof serv
   },
   async list_conversation_members(input, context) {
     const serviceUrl = resolveServiceUrl(input.serviceUrl, context);
-    const response = requireRecord(
+    const response = requiredResponseRecord(
       await requestConnector({
         context,
         method: "GET",
@@ -308,7 +309,8 @@ async function fetchConnectorToken(
   phase: TeamsBotRequestPhase,
 ): Promise<string> {
   const cacheKey = [cloud.loginEndpoint, context.tenantId, context.appId, context.clientSecret].join("\u0000");
-  const cached = tokenCache.get(cacheKey);
+  // Validation must reach Microsoft so a revoked secret is not accepted from a cached token.
+  const cached = phase === "validate" ? undefined : tokenCache.get(cacheKey);
   if (cached && cached.expiresAtMs > Date.now()) {
     return cached.token;
   }
@@ -344,7 +346,7 @@ async function fetchConnectorToken(
     },
   );
 
-  const record = requireRecord(payload, "token response");
+  const record = requiredResponseRecord(payload, "token response");
   const token = optionalString(record.access_token);
   if (token === undefined) {
     throw providerResponseError("Microsoft Teams Bot token response did not include an access token.");
@@ -426,14 +428,6 @@ function readErrorMessage(text: string): string | undefined {
   } catch {
     return trimmed.slice(0, 500);
   }
-}
-
-function requireRecord(value: unknown, label: string): Record<string, unknown> {
-  const record = optionalRecord(value);
-  if (!record) {
-    throw providerResponseError(`Microsoft Teams Bot ${label} was not an object.`);
-  }
-  return record;
 }
 
 function requireString(value: unknown, label: string): string {
