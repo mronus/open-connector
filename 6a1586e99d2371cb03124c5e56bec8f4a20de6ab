@@ -1,0 +1,5 @@
+version 1
+commit 6a1586e99d2371cb03124c5e56bec8f4a20de6ab
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792979157 ended=1792981670
+
+Addresses review feedback on the provider PR: credential validation no longer reads the token cache so a revoked secret is rejected, TeamsBotCredential is no longer exported, and the local record reader is replaced by requiredResponseRecord.
