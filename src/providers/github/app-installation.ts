@@ -1,7 +1,12 @@
 import { importPKCS8, SignJWT } from "jose";
 import { sha256Hex } from "../../core/aws-sigv4.ts";
 import { base64Bytes, optionalRecord, optionalString, stringRecord } from "../../core/cast.ts";
-import { ProviderRequestError, requiredInputString, runProviderRequest } from "../provider-runtime.ts";
+import {
+  providerInputError,
+  ProviderRequestError,
+  requiredInputString,
+  runProviderRequest,
+} from "../provider-runtime.ts";
 import { githubRequestJson } from "./runtime-shared.ts";
 
 /**
@@ -25,13 +30,6 @@ const appJwtLifetimeSeconds = 9 * 60;
 const appJwtClockSkewSeconds = 60;
 /** A cached installation token is replaced this long before GitHub expires it. */
 const installationTokenRenewalMarginMs = 5 * 60 * 1000;
-
-/**
- * GitHub accepts either the numeric App ID or the client ID as the JWT issuer
- * and does not document a client ID format. Client IDs are alphanumeric, and the
- * legacy `Iv1.` form carries a dot, so only characters outside that set are refused.
- */
-const githubAppIdentifierPattern = /^[A-Za-z0-9.]+$/u;
 
 const pkcs8Marker = "-----BEGIN PRIVATE KEY-----";
 const pkcs1Marker = "-----BEGIN RSA PRIVATE KEY-----";
@@ -63,9 +61,9 @@ interface GitHubAppInstallation {
 
 export function readGitHubAppInstallationCredential(values: Record<string, string>): GitHubAppInstallationCredential {
   const appId = requiredInputString(values.appId, "appId").trim();
-  if (!githubAppIdentifierPattern.test(appId)) {
-    throw new ProviderRequestError(
-      400,
+  // Legacy client IDs use an Iv1. prefix.
+  if (!/^[A-Za-z0-9.]+$/u.test(appId)) {
+    throw providerInputError(
       "appId must be the GitHub App's numeric App ID or its client ID, both shown on the App's settings page",
     );
   }
