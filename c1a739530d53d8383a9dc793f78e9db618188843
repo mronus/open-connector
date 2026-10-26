@@ -1,0 +1,13 @@
+version 1
+commit c1a739530d53d8383a9dc793f78e9db618188843
+capture observed git/2.56.0.agit.2
+actor dae759d4-bdc3-4900-bf1b-95139b981a20 ai model=claude-sonnet-5-5 tool=claude-code session=dae759d4-bdc3-4900-bf1b-95139b981a20 source=observed
+file src/providers/github/app-installation.test.ts
++ 79 AI dae759d4-bdc3-4900-bf1b-95139b981a20 e39327e6b3f629fddc88c0b7311cc743cafb691f
++ 81-85 AI dae759d4-bdc3-4900-bf1b-95139b981a20 4dbe8ef0c7f200f5bb7e3cd2486326b03db0fa0b
++ 115 AI dae759d4-bdc3-4900-bf1b-95139b981a20 3bbe38eca6f9875bd905dc099dbd66b32183ba11
++ 122 AI dae759d4-bdc3-4900-bf1b-95139b981a20 36881aac9f2c2b4100c3b8ca4781b1c0c9922e98
+- 79 AI dae759d4-bdc3-4900-bf1b-95139b981a20 ccd2d54ab1145ae635c4745fc255a3af47b434ef
+- 81 AI dae759d4-bdc3-4900-bf1b-95139b981a20 432c81a87d554f032cfc1cac06acb81f079bff4a
+- 111 AI dae759d4-bdc3-4900-bf1b-95139b981a20 03098d9f05100f969e07cbdba6ae64660bd46f3f
+- 118 AI dae759d4-bdc3-4900-bf1b-95139b981a20 347d6d6c9973a8bd4521e87d251de09be67bd5fe
