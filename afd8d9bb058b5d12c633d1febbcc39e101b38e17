@@ -1,0 +1,5 @@
+version 1
+commit afd8d9bb058b5d12c633d1febbcc39e101b38e17
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792976468 ended=1792979026
+
+Adds POST /v1/providers/microsoft_teams_bot/events/verify, a verification-only endpoint like the Slack one. It checks the Bot Framework JWT (RS256 signature from published keys, issuer, audience = selected connection's appId, expiry, serviceUrl claim, key endorsement). The bot is selected with the same connection selectors as Actions. The Bot Framework token is forwarded in X-Botframework-Authorization because Authorization carries the dedicated verify token. Shared the event body reader and bearer check with the Slack route.
