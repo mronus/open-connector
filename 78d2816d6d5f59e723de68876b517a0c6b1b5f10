@@ -1,0 +1,5 @@
+version 1
+commit 78d2816d6d5f59e723de68876b517a0c6b1b5f10
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792982184 ended=1792982317
+
+Loads jose lazily in the Teams verifier so the eager import graph test keeps jose out of index.ts and cloudflare.ts.
