@@ -1,0 +1,5 @@
+version 1
+commit aa48baf76c02d382b900ac7b248f70641cee20ce
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-sonnet-5-5 tool=claude-code started=1792984431 ended=1793397953
+
+Slack Interactivity requests (block_actions, view_submission, view_closed) reached the shared slackbot application source but were rejected, because the source only parsed Events API JSON. The source now verifies form-encoded interactivity bodies with the same signature check, decodes the payload field, routes by app and workspace, and normalizes interactions with trigger_id as the delivery id. Message event payloads stay unchanged to keep the shared conformance contract; the new event types are opt-in on sources and consumers. Tests cover routing, normalization, dedupe identity, rejections and Events API compatibility.
