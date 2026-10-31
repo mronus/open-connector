@@ -122,7 +122,6 @@ export const updateEventSourceSchema: z.ZodType<UpdateEventSource> = z.strictObj
   encryptKey: secret.optional(),
 });
 
-export const createEventSourceSchema: z.ZodType<CreateEventSource> = createSchema;
 export function sourceCreateSchema(kind: string): z.ZodType<CreateEventSource> {
   return createSchema.options.find((schema) => schema.shape.kind.safeParse(kind).success)!;
 }
