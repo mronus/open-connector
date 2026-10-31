@@ -1,0 +1,14 @@
+version 1
+commit 1f6f7bd1ab3266778d695539e311a7e593d10a06
+capture observed git/2.56.0.agit.2
+actor human human ident=M. Abdullah Onus <mronus@gmail.com>
+file docs/runtime-api.md
++ 140 HUMAN human 7ac0d5d53c0857c4b4881d6f5d1378f9814af703
+- 140 HUMAN human 9646732974fb14202c16dd2047ea01a80b8c1083
+file src/triggers/sources/slack.test.ts
++ 60-70 HUMAN human 77ecf80d710cf9f9ed6dcbe7be2a50b354a7972c
++ 210-218 HUMAN human e47281602d7d780d55eef1ec9fea2a6909844de3
+file src/triggers/sources/slack.ts
++ 198-209 HUMAN human af8b69b5eee682bd61500611ab5352b652051755
++ 242-247 HUMAN human c69aed6554bddc344540d525a2e40d75d908ef18
+- 198-206 HUMAN human 71fdcda163f356d630ccaa4196606e63180be3ec
