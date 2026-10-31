@@ -1,0 +1,5 @@
+version 1
+commit cc944b854196c27ee58a748f5a342b8bbe7247a1
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793397979 ended=1793419872
+
+Creating a slackbot.on_event Source through sourceReference answered 501 trigger_not_supported, because the Trigger runner requires a provider proxy executor as its transport and slackbot, unlike every other Trigger provider, exported none. The conformance adapter injects a stub proxy for each provider, which hid the gap. slackbot now exports a proxy matching slack's. Source create/update validation errors now name the failing fields by parsing with the kind-specific schema. An end-to-end test drives the real slackbot executor module through the runtime endpoint, and the docs list the shared Source triggers and the exact slackbot create input.
