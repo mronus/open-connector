@@ -1,0 +1,5 @@
+version 1
+commit a7bfb449aad170af255cf2d98c6c693d658aeb37
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793419904 ended=1793456575
+
+Addressing the CodeRabbit review on PR 809. Function-context interaction payloads carry interactivity.interactor.secret (per Slack's Deno SDK types), which was passed through in body; it is now stripped alongside token and bot_access_token, with a test. The docs now list every removed credential field and state that organization-wide installs, whose payloads have team null, match no workspace Source. The review's interactivity_pointer fallback was not applied because Slack's Bolt and Deno SDK types both require trigger_id on view_submission.
