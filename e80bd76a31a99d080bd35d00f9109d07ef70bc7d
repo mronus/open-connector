@@ -1,0 +1,16 @@
+version 1
+commit e80bd76a31a99d080bd35d00f9109d07ef70bc7d
+capture observed git/2.56.0.agit.2
+actor dae759d4-bdc3-4900-bf1b-95139b981a20 ai model=claude-opus-5-5 tool=claude-code session=dae759d4-bdc3-4900-bf1b-95139b981a20 source=observed
+actor human human ident=M. Abdullah Onus <mronus@gmail.com>
+file docs/runtime-api.md
++ 114 AI dae759d4-bdc3-4900-bf1b-95139b981a20 b3d16a1b938084db127d112205b500b28dd1c49a
++ 151 AI dae759d4-bdc3-4900-bf1b-95139b981a20 72fb03750505243c4edbfa35a6e03b404d318aab
+- 114 AI dae759d4-bdc3-4900-bf1b-95139b981a20 733320982a96b61430aaed8145ab18f4355fe553
+- 151 AI dae759d4-bdc3-4900-bf1b-95139b981a20 4e9425023448c52fd844d85c9ba71676d10df30b
+file src/triggers/sources/microsoft-teams.test.ts
++ 320-326 HUMAN human 5134b9b6b4cc3f57c09f4730cb267530db58b7c7
+- 320-323 HUMAN human 798f49e94d8766661be5b2c462e78190c40676a8
+file src/triggers/sources/microsoft-teams.ts
++ 99-105 AI dae759d4-bdc3-4900-bf1b-95139b981a20 5a8119cdd3a28b6411a0a8b57a50a928d807e1ee
+- 99 AI dae759d4-bdc3-4900-bf1b-95139b981a20 1006ba30b6a29aee6432308f844d69b0ba47e44d
