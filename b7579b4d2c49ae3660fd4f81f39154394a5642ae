@@ -1,0 +1,5 @@
+version 1
+commit b7579b4d2c49ae3660fd4f81f39154394a5642ae
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793604842 ended=1793605991
+
+Addresses CodeRabbit's Major finding on PR 822: an Azure Bot has one messaging endpoint shared by every Source of its App ID, and with tenant-limited Sources one bot now feeds several Sources, but route refused Teams deliveries because the source lacked applicationIngress, forcing hosts to fan out to every Source. The Teams source now uses application ingress like Slack, so Sources of one App ID share an application and route returns the matching references. #817 is in no release yet, only tip builds, so Sources created there keep working by reference but should be recreated before a create retry. Test routes one endpoint to the tenant's Sources and fails without the flag; docs describe route-then-receive and the appId needed to delete an unconfirmed Source.
