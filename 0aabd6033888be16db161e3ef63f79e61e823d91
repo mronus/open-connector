@@ -1,0 +1,5 @@
+version 1
+commit 0aabd6033888be16db161e3ef63f79e61e823d91
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793458694 ended=1793592085
+
+Adds the microsoft_teams_bot.on_activity Trigger backed by a shared event Source, so hosts subscribe to Teams activities like any other Trigger instead of running their own verification ingress. The Bot Framework token protocol moved from the server verifier into src/triggers/sources/teams-bot-token.ts so the verify route and the Source share one implementation, following the slack-signature/feishu-envelope pattern. The provider gains a proxy because the Trigger runner requires a transport for every Trigger provider. Activities are normalized with bot mentions stripped by name, deduplicated on [conversation.id, activity.id], filtered by type and conversation, and documented. Tests cover the source, a wrong-audience token, replays, filtering and the runtime endpoint with the real executor module.
