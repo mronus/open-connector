@@ -1,0 +1,5 @@
+version 1
+commit e80bd76a31a99d080bd35d00f9109d07ef70bc7d
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793606075 ended=1793627900
+
+Addresses two CodeRabbit comments on PR 825 left unaddressed at merge. Docs: Sources of one application can belong to different connections and receive answers trigger_not_found for a reference the selected connection does not own, so hosts must select each Source's own connection for receive; the general shared-Source paragraph also now lists Teams among application-routed deliveries. Code: the Teams source acknowledges activity types the Source does not subscribe to, so route no longer returns references that only lead to a discarded receive; done in the source rather than the shared route so route keeps returning an acknowledgement and Slack is unchanged.
