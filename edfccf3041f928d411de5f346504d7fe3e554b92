@@ -1,0 +1,10 @@
+version 1
+commit edfccf3041f928d411de5f346504d7fe3e554b92
+capture observed git/2.56.0.agit.2
+actor dae759d4-bdc3-4900-bf1b-95139b981a20 ai model=claude-opus-5-5 tool=claude-code session=dae759d4-bdc3-4900-bf1b-95139b981a20 source=observed
+file docs/runtime-api.md
++ 150 AI dae759d4-bdc3-4900-bf1b-95139b981a20 13c79745b8975d86a65573c57a3ea5050d8cbbb1
++ 155 AI dae759d4-bdc3-4900-bf1b-95139b981a20 3e18046fdad5e914c1e6dc7254d482f3ded9efa5
++ 161 AI dae759d4-bdc3-4900-bf1b-95139b981a20 ed2ebd1a1ad03070eecc223a41d29004561ea768
++ 163-168 AI dae759d4-bdc3-4900-bf1b-95139b981a20 b64d41c3590e72fa52c59485bcd8c578e05d729c
+- 154 AI dae759d4-bdc3-4900-bf1b-95139b981a20 940070eba5f631ec676e4bc4103f0b31d332d2f0
