@@ -1,0 +1,5 @@
+version 1
+commit edfccf3041f928d411de5f346504d7fe3e554b92
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793601532 ended=1793601570
+
+Documents the three Teams additions in the Provider Triggers section: the Source tenantId and why the connection's tenantId credential cannot fill it, the consumer tenant filter, the name/value outputs, card attachments with Microsoft's text-plus-card split, how Action.Execute, Action.Submit and Action.OpenUrl reach the bot, and list_team_channels with how hosts learn team IDs.
