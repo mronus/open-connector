@@ -1,0 +1,5 @@
+version 1
+commit 18d49eb224bdb72fd444843c90788b7cc7cfe647
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793600961 ended=1793601307
+
+One multi-tenant Teams bot serving several organizations, each with its own connection and Source, delivered every tenant's activities to every Source. The microsoft_teams_bot Source now takes an optional tenantId (identity and config unchanged when absent, so existing Sources keep matching), acknowledges other tenants' activities, shows the tenant in its view, and consumers can filter by tenantId. on_activity also outputs the invoke name and object value so Adaptive Card submissions are readable. Tests cover two tenant-limited Sources on one App ID plus an unlimited one, channelData-only tenants, consumer tenant filtering and card submission outputs.
