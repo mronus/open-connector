@@ -1,0 +1,5 @@
+version 1
+commit 1068bc2358dc05f4b30c9a766d8ce70dac61d1ef
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793592137 ended=1793594669
+
+GitLab had no Notes API actions and no single merge request read, so an agent could not read or answer a GitLab issue or merge request thread. Adds get_merge_request, list_issue_notes, create_issue_note, list_merge_request_notes and create_merge_request_note following the provider's existing path, pagination and error helpers, with schemas from GitLab's Notes and Merge Requests API docs and handler tests for the request mapping.
