@@ -1,0 +1,12 @@
+version 1
+commit 37b7f943a9b8182446e638643302fc5051646a45
+capture observed git/2.56.0.agit.2
+actor human human ident=M. Abdullah Onus <mronus@gmail.com>
+file src/providers/microsoft_teams_bot/runtime.test.ts
++ 138-162 HUMAN human 6ba0586e1a94f8ae77567e57f975ff7847962960
+file src/providers/microsoft_teams_bot/runtime.ts
++ 28 HUMAN human 02ecce3aabeb5c3ab09c213bec6019a9da5de6ac
++ 317-319 HUMAN human bff4ac25fec5e434952f4d266afde11945eb5a99
++ 340-345 HUMAN human 46107e5e74d27c85a5b5d1c8298e9df23bf6f49c
+- 316-317 HUMAN human 7f43771c54864935a48f20a053fd11c0b51b2ed2
+- 338-339 HUMAN human d52f590214a4469db532ae60a9396e0d0d70f2ca
