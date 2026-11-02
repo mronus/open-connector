@@ -1,0 +1,5 @@
+version 1
+commit 136dd9ab4976106a0101ff5c1a886458f6abdd50
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793601323 ended=1793601478
+
+send_message, reply_to_message and update_message could only send text, so a bot could not post Adaptive Cards. They now take optional attachments (Teams-supported Bot Framework card content types, enforced by the action schema) and attachmentLayout; text becomes optional with attachments. update_message replaces the whole message so cards can be swapped. Messages above Teams' documented 100 KB bot message limit (UTF-16) are refused before sending; the 28 KB figure in the request is Microsoft's Incoming Webhook limit, not the bot limit.
