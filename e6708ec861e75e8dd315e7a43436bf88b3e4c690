@@ -1,0 +1,22 @@
+version 1
+commit e6708ec861e75e8dd315e7a43436bf88b3e4c690
+capture observed git/2.56.0.agit.2
+actor human human ident=M. Abdullah Onus <mronus@gmail.com>
+file src/providers/grafana_cloud/actions.ts
++ 61 HUMAN human b29659313c984eeb6f016b4b65818f06c4174757
++ 63 HUMAN human acb0ae9b75851663cdaa33a07094f188bae2230f
+- 11-14 HUMAN human 6663352d85bc0c31d24d188842eb6bf948fcc8c7
+- 65 HUMAN human 7f989006a577bfa7a28689c3d8ee2870de2f0c5f
+- 67-74 HUMAN human f24a2f28a97b9453dcb1c78a42aa6fac14abf62c
+- 77-80 HUMAN human 724f7ac9a21037fa1019a5ce73a997d7c62bee22
+file src/providers/grafana_cloud/runtime.test.ts
++ 1-48 HUMAN human 50a61eabb7024c48f147c49a99a13ef0293a983f
+file src/providers/grafana_cloud/runtime.ts
++ 35-38 HUMAN human 1eac50ef25b59ffaa8c27f769be00141a93bad12
++ 82 HUMAN human 9564076e30c84733c78e7688f11a443f4facbf50
++ 110-113 HUMAN human 6635ea67c81881b40bda09d9b341bbd0c7a307ae
+- 35-46 HUMAN human 31e606091a1a3a1be1e2b518ded176bd9cbfd2db
+- 48-50 HUMAN human afb56d3e149a19c87475743f62c2b25dad5ebf7b
+- 53-54 HUMAN human 9871402c5a8f3e54860903a752a19c96fde875cc
+- 95-99 HUMAN human 8574d0651b2c76ecfffac183100e3c4ae41b26c0
+- 265-276 HUMAN human 54e3d714fddc5b8fafb217ca4fc744c1611b6cb8
