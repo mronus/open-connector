@@ -1,0 +1,13 @@
+version 1
+commit bb035ffd55b759f064d5155dd8230bd1821186e9
+capture observed git/2.56.0.agit.2
+actor human human ident=M. Abdullah Onus <mronus@gmail.com>
+file src/providers/grafana_cloud/runtime.test.ts
++ 11-14 HUMAN human 70bf1f09f9dd94c2f16a01bf6f362003fa50aacb
++ 17 HUMAN human cb4727b901abe87e346a4b671cb0459a3a294cb1
++ 37 HUMAN human 094efb0d3bf48876f58ed998fa1870a8a392aacf
++ 49-55 HUMAN human a60a1ebaac8f829045b346bc1adcebd9a2306ac4
+- 11 HUMAN human 3d740960eac0facbf9eaa1b2202d6e257d2e0ddd
+- 14 HUMAN human 3984b921e8e059e9f7888077d759cb8d8c49bcaf
+- 34 HUMAN human 408027469d23bb357da3f551f1b5f0406835d10b
+- 46 HUMAN human ed708d00e38a191e778b1ac2ed7ffce6f55d0720
