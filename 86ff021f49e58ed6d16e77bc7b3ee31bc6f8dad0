@@ -1,0 +1,5 @@
+version 1
+commit 86ff021f49e58ed6d16e77bc7b3ee31bc6f8dad0
+session dae759d4-bdc3-4900-bf1b-95139b981a20 model=claude-opus-5-5 tool=claude-code started=1793594703 ended=1793595275
+
+Addresses CodeRabbit on PR 819: GitLab answers 202 with a NoteCommands result instead of a note when a body holds only quick actions (lib/api/helpers/notes_helpers.rb), so the create actions' declared note output was wrong for that case. Both create actions now return { note, commandsChanges, commandSummary }, with note null for command-only bodies, plus a test for the 202 path.
