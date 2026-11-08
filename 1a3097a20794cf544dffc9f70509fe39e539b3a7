@@ -1,0 +1,24 @@
+version 1
+commit 1a3097a20794cf544dffc9f70509fe39e539b3a7
+capture observed git/2.56.0.agit.2
+actor human human ident=M. Abdullah Onus <mronus@gmail.com>
+file docs/cloudflare.md
++ 216-219 HUMAN human 34ae11ad1e69ff37d7f36934e818874165f1be90
+file docs/configuration.md
++ 224 HUMAN human 80743f5b5578f8afc421b4fcc87199e931287df5
++ 309-325 HUMAN human ed400ae65fd9a9d4e8e2763df6f7a24598a0f313
+- 224 HUMAN human 30cbcf4c57123cbe4384eb9f83703c3550dd840f
+file examples/local-http/README.md
++ 45-57 HUMAN human 911e09692ed607aeb2d77d1a2d8d2686235cdc72
+file examples/local-http/kubernetes.ts
++ 1-31 HUMAN human c39049fe64b55c41a94474bedc17137d6df83f03
+file src/providers/kubernetes/actions.ts
++ 1-334 HUMAN human 84824968c957d5b178430284dbc5ff95bd851ecd
+file src/providers/kubernetes/definition.ts
++ 1-46 HUMAN human beed2f3a4c9dc6d6687da8c68763c69859fa3ac7
+file src/providers/kubernetes/executors.ts
++ 1-58 HUMAN human 23c856af521331dff788629ab93a500f5d496b3b
+file src/providers/kubernetes/runtime.test.ts
++ 1-369 HUMAN human 8625631540ae4006afb1d2b2ed502bbe3551192d
+file src/providers/kubernetes/runtime.ts
++ 1-600 HUMAN human a7e20eb0f7a342e0d282419adddefdd8015bda16
