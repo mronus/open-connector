@@ -1,0 +1,5 @@
+version 1
+commit 0c3d4976da88da2688569de9da18232ce0ddb9a5
+session d41f4500-e006-460d-ac85-647beb821fa5 model=claude-fable-5-1 tool=claude-code started=1794108014 ended=1794108239
+
+list_my_repositories threw a 400 when an agent passed visibility, sort or direction with a GitHub App installation credential, even though the action's input schema declares those fields, so schema-valid calls failed on the first try in production. The installation path now ignores the three fields and calls /installation/repositories with only per_page and page, without sorting the page locally. The action description says the fields are ignored, and the installation test now passes all three and checks that only pagination is forwarded.
