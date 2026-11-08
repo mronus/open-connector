@@ -1,0 +1,5 @@
+version 1
+commit 886547a79be534f207c51d6819dc3553138d26d5
+session 011ad22b-b5f7-427d-a373-157ee856764a model=claude-opus-5-5 tool=claude-code started=1794124119 ended=1794125328
+
+Adds createCustomCaFetch, a base transport trusting a connection-supplied CA, because Kubernetes API servers almost always use a cluster-private CA and the platform fetch cannot trust one. Node uses an undici Agent loaded on first use, Bun its native tls option, and Workers fails with a 400 rather than using the default trust store. Also adds an accessor for a guarded fetch's bound network policy so swapping the transport keeps it, and moves isCloudflareWorkerRuntime from mail to core so the check has one owner.
