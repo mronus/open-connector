@@ -1,0 +1,5 @@
+version 1
+commit dedf7170a457e85ac5d5b823583de40930f9bc76
+session f48683b2-55f8-47bd-bf1b-9a65100750af model=claude-fable-5-2 tool=claude-code started=1794460842 ended=1794461015
+
+Checked CodeRabbit's second review on PR #889, which claimed the upload pipeline resolves before the server answers CLOSE. Probing on Node 22.14 and 24.22 showed pipeline settles only after the handle is closed and rejects on a failed CLOSE, so the claim was not applied. While verifying it, found that a failed CLOSE (SFTP FAILURE) on an upload with overwrite=false was misreported as an exclusive-create conflict; the conflict message is now limited to failures before the remote file opened, with a regression test whose server rejects CLOSE.
