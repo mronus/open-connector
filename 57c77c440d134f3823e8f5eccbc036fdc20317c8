@@ -1,0 +1,5 @@
+version 1
+commit 57c77c440d134f3823e8f5eccbc036fdc20317c8
+session f48683b2-55f8-47bd-bf1b-9a65100750af model=claude-fable-5-2 tool=claude-code started=1794365685 ended=1794458943
+
+Added a Node-only SFTP provider (list_directory, stat, download_file, upload_file, delete_file, create_directory, rename, remove_directory) on ssh2-sftp-client because the user asked for plain, non-HTTP SFTP connections. Raw TCP egress goes through the shared SSRF policy: the host is screened with resolveGuardedEgressTarget and the socket is pinned to the screened addresses, so the pinned-lookup helper moved from the IMAP protocol module into src/core/guarded-socket.ts to keep one owner. Host keys are pinned (user-supplied SHA256 fingerprint, or the key recorded by the credential validator) to prevent MITM. Tests run the real client against an in-process ssh2 server; an example script and README entry were added at the user's request.
