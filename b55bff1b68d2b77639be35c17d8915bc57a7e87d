@@ -1,0 +1,5 @@
+version 1
+commit b55bff1b68d2b77639be35c17d8915bc57a7e87d
+session f48683b2-55f8-47bd-bf1b-9a65100750af model=claude-fable-5-2 tool=claude-code started=1794458952 ended=1794460333
+
+Addressed the valid CodeRabbit review comments on PR #889 at the user's request. Option-less action schemas now use s.requiredObject so required paths are enforced by the schema. Uploads with overwrite=false open the remote file exclusively ("wx") through the typed createWriteStream, because the existence check alone let a concurrent writer's file be truncated. DNS resolution is raced against the session signal since node:dns lookups cannot be cancelled. Remote paths are read raw so names with surrounding spaces address the exact entry. The example warns that saving without a fingerprint replaces an earlier pin. The password-whitespace comment was not applied: shared credential normalization trims every provider's fields.
