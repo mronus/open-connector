@@ -1,0 +1,12 @@
+version 1
+commit 6638be4b4eb02341a35b51c4cee5c00d4c081c14
+capture observed git/2.56.0.agit.2
+actor human human ident=M. Abdullah Onus <mronus@gmail.com>
+file src/providers/jira/executors.test.ts
++ 3-4 HUMAN human 0fee5a06a005a3c13deb0203ab1278ec43bf59f5
++ 66-113 HUMAN human 2677dfe1be2e55301b30193230c4bc840fa18a44
+- 3-4 HUMAN human f4489bec2ed1abba04847a4aa7a187150070cad8
+file src/providers/jira/executors.ts
++ 14 HUMAN human df91136f3a4b7a102f74906b613485f5bfb583e9
++ 949-950 HUMAN human 13291c487ae4115272fd79b139405bb5d8d77123
+- 948 HUMAN human e530626b050ebb4428ceaee01f6613ade07f043a
