@@ -1,0 +1,10 @@
+version 1
+commit 798132f87fe2e4667a23200ed03b6845902cd92e
+capture observed git/2.56.0.agit.3
+actor 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 ai model=claude-fable-5-2 tool=claude-code session=6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 source=observed
+file src/catalog-localization/zh-CN/slack.ts
++ 5 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 266ae68a6fa1e6b6f9519d44df3abb0c2b2f65b7
+- 5 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 255817b51e9f5735827262b6948a98f83dd2b3ac
+file src/providers/slack/definition.ts
++ 31 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 6c9ea51f777de37fb33af946362d47626e8d2a88
+- 31 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 f481182747cc95770a7836feaa89e8043cbd768f
