@@ -1,0 +1,63 @@
+version 1
+commit 603b46720d07a03b4a567d0fc1c22275d31d3910
+capture observed git/2.56.0.agit.3
+actor 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 ai model=claude-fable-5-2 tool=claude-code session=6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 source=observed
+file src/catalog-localization/zh-CN/dingtalk_bot.ts
++ 5-6 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 1c10f90570524a73768b566943696e08c2fe1139
+file src/catalog-localization/zh-CN/feishu.ts
++ 5-6 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 722d8d453b985bfb705a79bf3c1d4cb6e73ea834
+file src/catalog-localization/zh-CN/feishu_app_bot.ts
++ 5-6 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 788e9ce4ffe6118d702e96e67d72f0d3ba06ea50
+file src/catalog-localization/zh-CN/feishu_custom_bot.ts
++ 5-6 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 8b13be81179612119a64d907e8930779702ad8e6
+file src/catalog-localization/zh-CN/notion.ts
++ 4-5 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 a890ee8df2f64a6f20bdb411e85de25204018703
+file src/catalog-localization/zh-CN/slack.ts
++ 4-5 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 8cb2eb3f3963a797a13524920914ebc6e712323b
+file src/catalog-localization/zh-CN/wecom_mcp.ts
++ 5-6 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 02219fb44cd45e3cefe97abbd392a9a74e9f983e
+file src/providers/clickup/definition.ts
++ 17-18 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 57524c2c56c201183f5f63f41526ddad45f4676c
+file src/providers/dingtalk_bot/definition.ts
++ 10-11 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 2c3744b3e9d34709ef9e92357d4b02eedb148573
+file src/providers/discord/definition.ts
++ 19-20 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 a0244936941de5563fbb0196bb6a80cbe3c0048c
+file src/providers/discordbot/definition.ts
++ 11-12 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 e2c713d589d09e815dfa555a227fcfba79b7de37
+file src/providers/feishu/definition.ts
++ 17-18 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 6e6b01b399e57ad2f07f9f90ed3204aa3e102577
+file src/providers/feishu_app_bot/definition.ts
++ 15-16 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 040ddb6fc1616552b891b26d692db42f9030a4fe
+file src/providers/feishu_custom_bot/definition.ts
++ 13-14 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 70e4eea6c66806738b511d9e76a3665f7fea2de7
+file src/providers/lark/definition.ts
++ 20-21 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 1e4381caf0d0b801a957d09e71921d054c5b8c9e
+file src/providers/linear/definition.ts
++ 17-18 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 78a6af75a1e6b1b1c501664ace9509c9f91321a1
+file src/providers/mcdonalds_cn/definition.ts
++ 13-14 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 8195dc2e7ee294204e0dec1058bdc9fb0542a6e8
+file src/providers/microsoft_teams/definition.ts
++ 12-13 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 cc1deff93e3b9e2fa18463eccc9e7ab3551cdba2
+- 12 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 f78e1b8b20b91e82f306c78882c516ba569890e3
+file src/providers/microsoft_teams_bot/definition.ts
++ 17-18 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 2a77337238f91746d85d3550a905a4dbf6468705
+file src/providers/notion/definition.ts
++ 19-20 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 a478d652ddbcf928c462e4fc70c6243cb4094a15
+file src/providers/openalex/definition.ts
++ 10-11 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 bf3cfcd257b16050a69a4b2f3a2b64497e8ebb14
+file src/providers/sellersprite/definition.ts
++ 13-14 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 f7001c29fe834bcbd348eb6ec08d4b2d75163414
+file src/providers/sellersprite_mcp/definition.ts
++ 7-8 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 4d113c1e1c7367a19564afee818ad2211f6ea3fe
+file src/providers/slack/definition.ts
++ 30-31 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 bf12bf3773f65ca5aa978d6717dd55be28525ab3
+file src/providers/slackbot/definition.ts
++ 18-19 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 1daf7f676ceca123bf1442d10d0aea7d0cfd3c85
+file src/providers/sorftime/definition.ts
++ 8-9 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 90fb6b69263d82b7301dab51e393f635ea268320
+file src/providers/sorftime_mcp/definition.ts
++ 8-9 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 c33be9a01966b23dcb5fdb792430ed450977fa4d
+file src/providers/tiktok_business/definition.ts
++ 8-9 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 931fd4a659484dd76e749caa001ced57c0a41269
+file src/providers/wecom_mcp/definition.ts
++ 8-9 AI 6fb01b21-2b9f-48f2-ad7a-a4ece3e331c5 9501992e00e7b14895309f60fc6e089b6baaa7d5
